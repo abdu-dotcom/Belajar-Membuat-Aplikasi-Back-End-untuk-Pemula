@@ -1,3 +1,0 @@
-Ini merupakan baris pertama!
-Ini merupakan baris kedua!
-Ini merupakan baris ketiga!
