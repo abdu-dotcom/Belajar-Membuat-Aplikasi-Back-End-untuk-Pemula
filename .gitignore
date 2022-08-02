@@ -1,4 +1,5 @@
+# Folder Image
 /img
 
-/node_modules
-/node_modules/
+# node_modules
+node_modules/
