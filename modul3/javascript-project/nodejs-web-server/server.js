@@ -10,21 +10,23 @@ const requestListener = (request, response) => {
     response.statusCode = 200;
     
     const { method } = request;
-    
+
     if (method === 'GET') {
-        response.end('<h1>Kamu sedang menggunakan method GET</h1>')
+        response.end('<h1>Hello!</h1>')
     }
     if (method === 'POST') {
-        response.end('<h1>Kamu sedang menggunakan method POST</h1>')
-    }
-    if (method === 'PUT') {
-        response.end('<h1>Kamu sedang menggunakan method PUT</h1>')
-    }
-    if (method === 'DELETE') {
-        response.end('<h1>Kamu sedang menggunakan method DELETE</h1>')
-    }
+        let body = [];
 
-    response.end('<h1> Hallo HTTP Server!</h1>');
+        request.on('data', (chunk) => {
+            body.push(chunk);
+        })
+    
+        request.on('end', () => {
+            body = Buffer.concat(body).toString();
+            const { name } = JSON.parse(body);
+            response.end(`<h1>Hai, ${name}!</h1>`);
+        })  
+    }
 };
 
 const server = http.createServer(requestListener);
