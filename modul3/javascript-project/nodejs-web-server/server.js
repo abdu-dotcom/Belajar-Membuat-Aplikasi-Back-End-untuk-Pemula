@@ -6,7 +6,8 @@ const http = require("http");
  * @param {response} response merupakan object yang digunakan untuk menanggapi permintaan
  */
 const requestListener = (request, response) => {
-    response.setHeader('Content-Type', 'text/html');
+    response.setHeader('Content-Type', 'application/json');
+    response.setHeader('X-Powered-By', 'NodeJS');
     response.statusCode = 200;
     
     // mendapatkan request method
@@ -18,7 +19,7 @@ const requestListener = (request, response) => {
         if (method === 'GET') {
 
             response.statusCode = 200;
-            response.end("Ini adalah homepage");
+            response.end("<h1>Ini adalah homepage</h1>");
         } else {
 
             response.statusCode = 400;
