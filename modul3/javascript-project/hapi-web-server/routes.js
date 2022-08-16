@@ -28,10 +28,15 @@ const routes = [{
         },
         {
             method: 'GET',
-            path: '/hello/{username?}',
+            path: '/hello/{name?}',
             handler: (request, h) => {
-                const { username = "stranger" } = request.params;
-                return `Hello, ${username}!`;
+                const { name = "stranger" } = request.params;
+                const { lang } = request.query;
+
+                if (lang === 'id') {
+                    return `Hai, ${name}!`;
+                }
+                return `Hello, ${name}!`;
             },
         },
         {
