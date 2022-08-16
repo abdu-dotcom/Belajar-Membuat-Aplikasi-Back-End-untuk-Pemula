@@ -27,6 +27,14 @@ const routes = [{
             },
         },
         {
+            method: 'GET',
+            path: '/hello/{username?}',
+            handler: (request, h) => {
+                const { username = "stranger" } = request.params;
+                return `Hello, ${username}!`;
+            },
+        },
+        {
             method: '*',
             path: '/{any*}',
             handler: (request, h) => {
@@ -35,4 +43,4 @@ const routes = [{
         },
     ]
 
-module.exports = routes
+module.exports = routes;
