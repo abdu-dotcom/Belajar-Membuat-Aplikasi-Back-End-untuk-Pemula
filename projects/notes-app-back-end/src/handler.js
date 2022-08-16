@@ -1,6 +1,6 @@
 // Memuat seluruh fungsi handler yang digunakan pada berkas routes
 
-const nanoid = require('nanoid');
+const { nanoid } = require('nanoid');
 const notes = require('./notes');
 
 const addNoteHandler = (request, h) => {
@@ -39,4 +39,10 @@ const addNoteHandler = (request, h) => {
 	return response;
 };
 
-module.exports = { addNoteHandler };
+const getAllnotesHandler = () => ({
+	status: 'success',
+	data: {
+		notes,
+	},
+});
+module.exports = { addNoteHandler, getAllnotesHandler };
